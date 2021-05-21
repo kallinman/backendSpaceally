@@ -2,20 +2,26 @@ from Spaceally import *
 
 sa = Spaceally()
 
-id1 = sa.createuser(username="u1", emailaddress="u1@m.com")
-id2 = sa.createuser(username="u2", emailaddress="u2@m.com")
-id3 = sa.createuser(username="u3", emailaddress="u3@m.com")
-id4 = sa.createuser(username="u4", emailaddress="u4@m.com")
+# Skapa användare
+id1 = sa.users_post(username="u1", emailaddress="u1@m.com")
+id2 = sa.users_post(username="u2", emailaddress="u2@m.com")
+id3 = sa.users_post(username="u3", emailaddress="u3@m.com")
+id4 = sa.users_post(username="u4", emailaddress="u4@m.com")
+
+sa.show_users()
+#print()
+#print("Userlist:")
+#for email, username in ul.items():
+#    print(email + " " + username)
 
 # Assign space to a friend
-sa.createassignment(assigner="u1", assigned="u2")
-sa.createassignment(assigner="u3", assigned="u2")
+sa.assignments_post(assigner="u1", assigned="u2")
+sa.assignments_post(assigner="u3", assigned="u2")
+sa.assignments_post(assigner="u3", assigned="u4")
+sa.assignments_post(assigner="u2", assigned="u1")
+sa.assignments_post(assigner="u2", assigned="u4")
 
-# Get space I can assign to
-ux="u2"
-print(ux + " can assign to:")
-for assigner in sa.getAssignments(ux):
-    print(assigner)
+sa.show_assignments()
 
 # get imagesIDs for a user
 #ux="u1"
@@ -23,23 +29,25 @@ for assigner in sa.getAssignments(ux):
 #    print(imageid)
 
 # post image to a user
-ufrom="u2"
-uto="u1"
 sa.postImage(url="url1", ufrom="u2", uto="u1")
-uto="u3"
 sa.postImage(url="url2", ufrom="u2", uto="u3")
+sa.postImage(url="url3", ufrom="u4", uto="u3")
 
-
-# get imagesIDs for a user
-ux="u1"
-print(ux + "has the following imageIDs")
-for imageid in sa.getImageIDs(ux):
-    print(imageid)
+sa.show_images()
 
 # get imagesIDs for a user
-ux="u3"
-print(ux + "has the following imageIDs")
-for imageid in sa.getImageIDs(ux):
-    print(imageid)
+#ux="u1"
+#print(ux + "has the following imageIDs")
+#for imageid in sa.getImageIDs(ux):
+#    print(imageid)
 
-sa.description()
+# get imagesIDs for a user
+#ux="u3"
+#print(ux + "has the following imageIDs")
+#for imageid in sa.getImageIDs(ux):
+#    print(imageid)
+
+#ul = sa.users_get()
+#print(ul)
+
+#sa.description()

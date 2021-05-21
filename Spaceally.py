@@ -4,19 +4,26 @@ class Spaceally:
         self.assignments={}
         self.images={}
 
-    def createuser(self, username, emailaddress):
+    # respons to /Spaceally/users/ POST
+    def users_post(self, username, emailaddress):
         self.userlist[emailaddress]=username
 
         return 1
 
-    def createassignment(self, assigner, assigned):
+    # respons to /spaceally/users/ GET
+    def users_get(self):
+        return self.userlist
+
+    # respons to /spaceally/assignments/assigned/ POST
+    def assignments_post(self, assigner, assigned):
         if assigned in self.assignments:
             self.assignments[assigned].append(assigner)
         else:
             self.assignments[assigned]=[assigner]
         return 1
 
-    def getAssignments(self, assigned):
+    # respons to /spaceally/assignments/assigned/ GET
+    def assignments_get(self, assigned):
         if assigned in self.assignments:
             return self.assignments[assigned]
         else:
@@ -36,7 +43,6 @@ class Spaceally:
         else:
             self.images[uto] = [url]
 
-
     def description(self):
         print('This is Spaceally')
         print("Users")
@@ -47,3 +53,29 @@ class Spaceally:
         print()
         print("Images")
         print(self.images)
+
+    def show_users(self):
+        print()
+        print("userlist:")
+        for email, username in self.userlist.items():
+            print(email + " " + username)
+
+    def show_assignments(self):
+        print()
+        print("assignments:")
+        for assigned, assigners in self.assignments.items():
+            print(assigned + " can post images to:")
+            for assigner in assigners:
+                print(assigner)
+        #for email, username in self.userlist.items():
+        #    print(username + " can post images to:")
+        #    for assigner in self.assignments_get(username):
+        #        print(assigner)
+
+    def show_images(self):
+        print()
+        print("images:")
+        for receiver, pics  in self.images.items():
+            print(receiver + " has the following images:")
+            for pic in pics:
+                print(pic)
