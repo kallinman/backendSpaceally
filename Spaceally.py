@@ -39,10 +39,11 @@ class Spaceally:
 
     def description(self):
         print('This is Spaceally')
-        print('userlist:')
-        for user in self.userlist:
-            print(user)
-        print('assignments:')
-        for assigned, assigners in self.assignments:
-            print(assigned)
-            print(assigners)
+        print("Users")
+        print(self.userlist)
+        print()
+        print("Assignments")
+        print(self.assignments)
+        print()
+        print("Images")
+        print(self.images)

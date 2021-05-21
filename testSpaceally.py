@@ -1,7 +1,6 @@
 from Spaceally import *
 
 sa = Spaceally()
-sa.description()
 
 id1 = sa.createuser(username="u1", emailaddress="u1@m.com")
 id2 = sa.createuser(username="u2", emailaddress="u2@m.com")
@@ -42,3 +41,5 @@ ux="u3"
 print(ux + "has the following imageIDs")
 for imageid in sa.getImageIDs(ux):
     print(imageid)
+
+sa.description()
